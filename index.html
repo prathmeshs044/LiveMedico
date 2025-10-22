@@ -74,18 +74,21 @@
   justify-content: space-between;
   width: 28px;
   height: 20px;
-  background: none;
+  background: transparent;
   border: none;
   cursor: pointer;
   padding: 0;
+  z-index: 200;
+  position: relative;
 }
 
 .menu-toggle span {
   display: block;
   height: 3px;
-  background: var(--text);
+  width: 100%;
+  background-color: #1e293b; /* dark bar visible on light background */
   border-radius: 2px;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 /* Hide nav links by default on small screens */
@@ -112,8 +115,9 @@
 
   .menu-toggle {
     display: flex;
+    margin-left: auto;
   }
-  .cta { display: none; }
+
   nav.nav-links.active {
     display: flex;
     animation: fadeInDown 0.4s ease forwards;
@@ -124,7 +128,7 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* Animate toggle icon into an “X” */
+  /* Transform hamburger into “X” when active */
   .menu-toggle.active span:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
   }
@@ -135,8 +139,9 @@
     transform: translateY(-8px) rotate(-45deg);
   }
 
+  /* Optional: hide large CTA button on mobile */
   .cta {
-    display: none; /* Hide CTA for smaller screens, optional */
+    display: none;
   }
 }
     @media(min-width: 900px) { .split { grid-template-columns: 1fr 1fr; } }
