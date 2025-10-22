@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LiveMedico Pharmaceutical Pvt. Ltd.</title>
+  <meta name="description" content="LiveMedico Pharmaceutical Private Limited — Advancing healthcare through evidence-based nutraceutical and pharmaceutical solutions." />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --brand: #2563eb;
+      --brand-light: #60a5fa;
+      --accent: #10b981;
+      --shadow: 0 10px 25px rgba(0,0,0,0.06);
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      font-family: 'Manrope', 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      scroll-behavior: smooth;
+      font-feature-settings: 'liga' 1, 'kern' 1;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 1px 10px rgba(0,0,0,0.05);
+    }
+    .nav { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 22px; color: var(--text); text-decoration: none; font-family: 'DM Sans', sans-serif; }
+    nav ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; }
+    nav a { text-decoration: none; color: var(--muted); font-weight: 500; transition: color 0.3s; font-family: 'Manrope', sans-serif; }
+    nav a:hover { color: var(--brand); }
+    .cta { background: var(--brand); color: white; padding: 10px 18px; border-radius: 10px; text-decoration: none; font-weight: 600; box-shadow: var(--shadow); transition: background 0.3s; font-family: 'DM Sans', sans-serif; }
+    .cta:hover { background: var(--brand-light); }
+
+    /* Hero */
+    .hero { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; max-width: 1200px; margin: 80px auto; padding: 0 24px; gap: 40px; }
+    .hero-text { flex: 1 1 500px; }
+    .hero h1 { font-size: 48px; line-height: 1.15; margin-bottom: 20px; font-weight: 700; font-family: 'DM Sans', sans-serif; }
+    .hero p { font-size: 18px; color: var(--muted); margin-bottom: 24px; font-family: 'Manrope', sans-serif; }
+    .hero img { flex: 1 1 450px; border-radius: var(--radius); box-shadow: var(--shadow); width: 100%; object-fit: cover; height: 350px; }
+
+    /* Section */
+    section { max-width: 1200px; margin: 80px auto; padding: 0 24px; }
+    .section-head { text-align: center; margin-bottom: 40px; }
+    .section-head h2 { font-size: 34px; margin-bottom: 10px; font-family: 'DM Sans', sans-serif; font-weight: 700; }
+    .section-head p { color: var(--muted); font-family: 'Manrope', sans-serif; }
+
+    /* Cards */
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .card { background: white; border-radius: var(--radius); box-shadow: var(--shadow); padding: 24px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+    .card h3 { margin-top: 0; font-size: 22px; color: var(--brand); font-family: 'DM Sans', sans-serif; }
+    .card p { color: var(--muted); font-family: 'Manrope', sans-serif; }
+    .card img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-top: 16px; }
+
+    /* Two-column sections */
+    .split { display: grid; gap: 40px; align-items: center; }
+    @media(min-width: 900px) { .split { grid-template-columns: 1fr 1fr; } }
+    .split img { width: 100%; height: 300px; object-fit: cover; border-radius: var(--radius); }
+
+    /* Footer */
+    footer { background: #f8fafc; padding: 60px 24px; margin-top: 100px; border-top: 1px solid #e2e8f0; }
+    footer .cols { max-width: 1200px; margin: 0 auto; display: grid; gap: 40px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+    footer h4 { margin-bottom: 10px; font-family: 'DM Sans', sans-serif; font-weight: 700; }
+    footer p, footer a { color: var(--muted); text-decoration: none; font-size: 14px; font-family: 'Manrope', sans-serif; }
+    footer a:hover { color: var(--brand); }
+
+    .fade { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .fade.in { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a href="#home" class="brand">LiveMedico Pharma</a>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="#contact" class="cta">Get in Touch</a>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-text fade">
+      <h1>Advancing Healthcare with Science & Compassion</h1>
+      <p>LiveMedico Pharmaceutical develops reliable nutraceutical and pharmaceutical formulations, empowering better care for fertility, women’s health, and overall wellness.</p>
+      <a href="#products" class="cta">Explore Products</a>
+    </div>
+    <img src="Happy Family.jpg" alt="Research lab representing innovation at LiveMedico">
+  </section>
+
+  <section id="about">
+    <div class="section-head fade">
+      <h2>About LiveMedico</h2>
+      <p>Science-driven innovation meeting everyday healthcare needs.</p>
+    </div>
+    <div class="split fade">
+      <img src="Company LOGO.jpg" alt="Company team collaborating in discussion">
+      <div>
+        <p>At LiveMedico, we combine clinical understanding and formulation science to develop products that meet both patient and practitioner expectations. Our mission is to elevate daily healthcare with reliable, effective, and accessible solutions.</p>
+        <ul style="color:var(--muted);line-height:1.8">
+          <li>Collaborative research with medical experts</li>
+          <li>Quality manufacturing aligned with FSSAI standards</li>
+          <li>Focused on both nutraceuticals and pharmaceuticals</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <div class="section-head fade">
+      <h2>Research & Validation</h2>
+      <p>Every formulation backed by clinical validation and evidence-based design.</p>
+    </div>
+    <div class="cards fade">
+      <div class="card">
+        <h3>Design & Development</h3>
+        <p>Integrating medical expertise and scientific literature to design purpose-driven formulations.</p>
+      </div>
+      <div class="card">
+        <h3>Data & Testing</h3>
+        <p>Systematic data analysis and validation processes to ensure safety, efficacy, and quality.</p>
+      </div>
+      <div class="card">
+        <h3>Real-world Evaluation</h3>
+        <p>Continuous feedback from clinicians ensures effectiveness in practical application.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="products">
+    <div class="section-head fade">
+      <h2>Our Product Portfolio</h2>
+      <p>Reliable, clinically validated, and trusted by healthcare professionals.</p>
+    </div>
+    <div class="cards fade">
+      <div class="card"> 
+        <h3>OviLive BD — A clearer journey for patients</h3>
+        <a href="OviLive - BD (female fertility)/ovi_live_bd_one_page_website_landing_v.1.html">
+          <p>
+            Supports cycle-aligned counselling with adherence-friendly packaging and clear dosage communication.
+          </p>
+        </a>
+        <img src="OviLive - BD (female fertility)/OviLive - BD product packaging.jpg">
+      </div>
+
+      <div class="card">
+        <h3>FertiLive — Balanced, Practical, Adherence-first</h3>
+        <a href="FertiLive - Male fertility/fertilive_website_layout.html"> 
+          <p>A clinically balanced fertility formulation designed for men, combining antioxidants and micronutrients for reproductive health.</p>
+        </a>
+        <img src="FertiLive - Male fertility/FertiLive Product Packaging draft version Gemini.jfif" alt="FertiLive packaging">
+      </div>
+      <div class="card">
+        <h3>AppetiLive — Nourish Recovery Naturally</h3>
+        <a href="AppetiLive - kids Appetite/appetilive_hero_page.html">
+          <p>An appetite-support tonic that aids recovery and improves nutritional intake under clinical supervision.</p>
+        </a>
+        <img src="AppetiLive - kids Appetite/AppetiLive Product packaging.jpeg" alt="AppetiLive packaging">
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-head fade">
+      <h2>Contact Us</h2>
+      <p>Partner with us to transform everyday healthcare.</p>
+    </div>
+    <div class="split fade">
+      <form onsubmit="event.preventDefault(); alert('Thank you for reaching out! Our team will contact you shortly.');" style="background:white;padding:24px;border-radius:var(--radius);box-shadow:var(--shadow)">
+        <label>Name<br><input type="text" required style="width:100%;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #e2e8f0"></label>
+        <label>Email<br><input type="email" required style="width:100%;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #e2e8f0"></label>
+        <label>Message<br><textarea rows="4" style="width:100%;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #e2e8f0"></textarea></label>
+        <button type="submit" class="cta">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="cols">
+      <div>
+        <h4>LiveMedico Pharmaceutical Pvt. Ltd.</h4>
+        <p>Delivering science-backed healthcare solutions for a better tomorrow.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <p><a href="#about">About</a></p>
+        <p><a href="#research">Research</a></p>
+        <p><a href="#products">Products</a></p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>Email: livemedico.pharma@gmail.com</p>
+        <p>Phone: +91-81048-74042</p>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:30px;color:var(--muted);font-size:13px">© <span id="year"></span> LiveMedico Pharmaceutical Pvt. Ltd. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){ entry.target.classList.add('in'); }
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.fade').forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>
