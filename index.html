@@ -156,6 +156,22 @@
 
     .fade { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
     .fade.in { opacity: 1; transform: none; }
+
+   /* --- Loader Spinner --- */
+.loader {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #2563eb;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+ 
   </style>
 </head>
 <body>
@@ -173,11 +189,11 @@
       <li><a href="#about">About</a></li>
       <li><a href="#research">Research</a></li>
       <li><a href="#products">Products</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#inquiry">Contact</a></li>
     </ul>
   </nav>
 
-  <a href="#contact" class="cta">Get in Touch</a>
+  <a href="#inquiry" class="cta">Get in Touch</a>
 </div>
   </header>
 
@@ -236,7 +252,7 @@
     </div>
     <div class="cards fade">
       <div class="card"> 
-        <h3>OviLive BD — A clearer journey for Motherhood</h3>
+        <h3>OviLive BD — A clearer journey for patients</h3>
         <a href="OviLive - BD (female fertility)/ovi_live_bd_one_page_website_landing_v.1.html">
           <p>
             Supports cycle-aligned counselling with adherence-friendly packaging and clear dosage communication.
@@ -247,10 +263,12 @@
 
       <div class="card">
         <h3>FertiLive — Balanced, Practical, Adherence-first</h3>
-        <a href="FertiLive - Male fertility/fertilive_website_layout.html"> 
+        
           <p>A clinically balanced fertility formulation designed for men, combining antioxidants and micronutrients for reproductive health.</p>
-        </a>
+        
+        <a href="FertiLive - Male fertility/fertilive_website_layout.html"> 
         <img src="FertiLive - Male fertility/FertiLive Product Packaging draft version Gemini.jfif" alt="FertiLive packaging">
+        </a>
       </div>
       <div class="card">
         <h3>AppetiLive — Nourish Recovery Naturally</h3>
@@ -262,20 +280,25 @@
     </div>
   </section>
 
-  <section id="contact">
-    <div class="section-head fade">
-      <h2>Contact Us</h2>
-      <p>Partner with us to transform everyday healthcare.</p>
-    </div>
-    <div class="split fade">
-      <form onsubmit="event.preventDefault(); alert('Thank you for reaching out! Our team will contact you shortly.');" style="background:white;padding:24px;border-radius:var(--radius);box-shadow:var(--shadow)">
-        <label>Name<br><input type="text" required style="width:100%;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #e2e8f0"></label>
-        <label>Email<br><input type="email" required style="width:100%;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #e2e8f0"></label>
-        <label>Message<br><textarea rows="4" style="width:100%;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #e2e8f0"></textarea></label>
-        <button type="submit" class="cta">Send Message</button>
-      </form>
-    </div>
-  </section>
+  <section id="inquiry">
+  <div class="section-head fade">
+    <h2>Order & Inquiry Form</h2>
+    <p>Please fill in the form below and our team will contact you shortly.</p>
+  </div>
+
+  <iframe
+    src="https://forms.gle/u1sw3e5zQu95XdKK9"
+    width="100%"
+    height="900"
+    frameborder="0"
+    marginheight="0"
+    marginwidth="0"
+    style="border-radius:16px; box-shadow:0 10px 25px rgba(0,0,0,0.05);"
+  >
+    Loading…
+  </iframe>
+</section>
+
 
   <footer>
     <div class="cols">
@@ -317,5 +340,50 @@
     }, { threshold: 0.2 });
     document.querySelectorAll('.fade').forEach(el=>observer.observe(el));
   </script>
+
+<script>
+  const form = document.getElementById("contactForm");
+  const responseMsg = document.getElementById("responseMessage");
+  const spinner = document.getElementById("spinner");
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    responseMsg.textContent = "";
+    spinner.style.display = "block";
+
+    const data = {
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      message: document.getElementById("message").value
+    };
+
+  fetch("https://script.google.com/macros/s/AKfycbz6KwImFE_s1qmYBaJvn76rQ1q8gVbl3s3seMjuxIyFLM3K955mSYEIfdRP6QtGO8Q5/exec", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(data)
+})
+.then(response => response.text()) // 👈 use .text() because Apps Script returns plain text
+.then(result => {
+  console.log("Server Response:", result);
+  spinner.style.display = "none";
+  if (result.includes("success")) {
+    responseMsg.textContent = "✅ Thank you! Your message has been sent successfully.";
+    responseMsg.style.color = "green";
+    form.reset();
+  } else {
+    responseMsg.textContent = "⚠️ Submission failed. Please try again.";
+    responseMsg.style.color = "red";
+  }
+})
+.catch(error => {
+  console.error("Error:", error);
+  spinner.style.display = "none";
+  responseMsg.textContent = "⚠️ There was an error. Please try again.";
+  responseMsg.style.color = "red";
+});
+
+  });
+</script>
+
 </body>
 </html>
